@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#screen {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(6, 60px);
+}
