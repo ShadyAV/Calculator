@@ -1,24 +1,13 @@
 let first_number = "0";
 let operation = "";
 let second_number = "";
+let shouldClearScreen = false;
 
 const numberButtons = document.querySelectorAll(".numberButton");
 const operatorButtons = document.querySelectorAll(".operatorButton");
 const equalBtn = document.getElementById("equalBtn");
 const lowerScreen = document.getElementById("lowerBlock");
-
-function calculate() {
-    //RegEx to spot operator between numbers
-    //const regex_match = lowerScreen.textContent.match(/(?<=[\d+])[\+\-\/\*](?![\+])/);
-    let numbers = lowerScreen.textContent.split(/(?<=[\d+])[\+\-\/\*](?![\+])/);
-    first_number = Number(numbers[0]);
-    //operation = regex_match[0];
-    second_number = Number(numbers[1]);
-    if (!second_number) {
-        second_number = first_number;
-        display(second_number);
-    }
-}
+const upperScreen = document.getElementById("upperBlock");
 
 function add(number_one, number_two) {
     return number_one + number_two;
@@ -51,9 +40,11 @@ function operate(operator, number_one, number_two) {
 
 equalBtn.addEventListener("click", () => {
     if (operation) {
-        calculate();
+        second_number = Number(lowerScreen.textContent);
+        displayUpper(second_number);
         let result = operate(operation, first_number, second_number);
-        display(equalBtn.textContent);
+        displayUpper(equalBtn.textContent);
+        shouldClearScreen = true;
         display(result);
     }
 });
@@ -66,14 +57,25 @@ numberButtons.forEach(element => {
 
 operatorButtons.forEach(element => {
     element.addEventListener("click", () => {
+        first_number = Number(lowerScreen.textContent);
         operation = element.textContent;
-        display(element.textContent);
+        displayUpper(first_number);
+        displayUpper(element.textContent);
+        shouldClearScreen = true;
     })
 });
 
 function display(content) {
     if (lowerScreen.textContent === "0" && content !== "+") {
         lowerScreen.textContent = content;
+    } else if (shouldClearScreen === true) {
+        console.log(content);
+        lowerScreen.textContent = content;
+        shouldClearScreen = false;
     } else
         lowerScreen.textContent += content;
+}
+
+function displayUpper(content) {
+    upperScreen.textContent += content;
 }

@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -11,13 +12,24 @@
 
 #screen {
     width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    text-align: right;
+}
+
+#upperBlock {
+    height: 12px;
+}
+
+#lowerBlock {
+    height: 36spx;
 }
 
 #buttons {
     display: grid;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: repeat(6, 60px);
+}
+
+#equalBtn {
+    grid-column-start: 3;
+    grid-column-end: 5;
 }
