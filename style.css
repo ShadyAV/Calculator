@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,28 +11,109 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: #a39274;
+    min-height: 85vh;
+}
+
+h1 {
+    font-family: 'Bebas Neue', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    color: #a39274;
+    background-color: #252523;
+    font-size: 48px;
 }
 
 #screen {
     width: 320px;
+    height: 120px;
     text-align: right;
+    padding: 10px;
+    background-color: #252523;
+    font-family: 'Nova Square', cursive;
 }
 
 #upperBlock {
-    height: 12px;
+    height: 20px;
+    padding-bottom: 30px;
+    font-size: 28px;
+    color: #a39274;
 }
 
 #lowerBlock {
-    height: 36spx;
+    height: 100px;
+    font-size: 56px;
+    color: #dfd8c8;
 }
 
 #buttons {
     display: grid;
     grid-template-columns: repeat(4, 80px);
-    grid-template-rows: repeat(6, 60px);
+    grid-template-rows: repeat(5, 60px);
 }
 
 #equalBtn {
     grid-column-start: 3;
     grid-column-end: 5;
+}
+
+#clearAll {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+button {
+    font-size: 20px;
+    background-color: #2d2d2b;
+    color: #ffffff;
+    border: 1px solid #252523;
+    border-radius: 4px;
+    font-family: 'Nova Square', cursive;
+}
+
+button:hover {
+    background-color: #3e3e3b;
+}
+
+p {
+    font-family: 'Bebas Neue', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a39274;
+    min-height: 5vh;
+    background-color: #252523;
+    font-size: 24px;
+}
+
+.numberButton {
+    background-color: #3e3e3b;
+}
+
+.numberButton:hover {
+    background-color: #2d2d2b;
+}
+
+#screenAndButtons {
+    border: 2px solid #252523;
+    background-color: #252523;
+}
+
+#equalBtn {
+    background-color: #4e3812;
+}
+
+#equalBtn:hover {
+    background-color: rgba(78, 56, 18, 70%);
+}
+
+#clearAll {
+    background-color: #34312c;
+}
+
+#clearAll:hover {
+    background-color: rgba(52, 49, 44, 70%);
 }

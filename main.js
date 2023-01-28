@@ -58,12 +58,14 @@ equalBtn.addEventListener("click", () => {
 
 numberButtons.forEach(element => {
     element.addEventListener("click", () => {
-        if (second_number) {
-            clearAll();
-        }
-        display(element.textContent);
-        if (operation) {
-            shouldCalculate = true;
+        if (lowerScreen.textContent.length < 16) {
+            if (second_number) {
+                clearAll();
+            }
+            display(element.textContent);
+            if (operation) {
+                shouldCalculate = true;
+            }
         }
     })
 });
@@ -106,6 +108,9 @@ operatorButtons.forEach(element => {
 });
 
 function display(content) {
+    if (lowerScreen.textContent[lowerScreen.textContent.length - 1] === "." && content === ".") {
+        return 0;
+    }
     if (lowerScreen.textContent === "0" && content !== "+" && content !== ".") {
         lowerScreen.textContent = content;
     } else if (shouldClearScreen === true) {
