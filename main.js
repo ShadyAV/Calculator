@@ -58,14 +58,12 @@ equalBtn.addEventListener("click", () => {
 
 numberButtons.forEach(element => {
     element.addEventListener("click", () => {
-        if (lowerScreen.textContent.length < 16) {
-            if (second_number) {
-                clearAll();
-            }
-            display(element.textContent);
-            if (operation) {
-                shouldCalculate = true;
-            }
+        if (second_number) {
+            clearAll();
+        }
+        display(element.textContent);
+        if (operation) {
+            shouldCalculate = true;
         }
     })
 });

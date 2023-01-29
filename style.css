@@ -24,28 +24,38 @@ h1 {
     min-height: 10vh;
     color: #a39274;
     background-color: #252523;
-    font-size: 48px;
+    font-size: 56px;
 }
 
 #screen {
-    width: 320px;
-    height: 120px;
+    max-width: 320px;
+    max-height: 120px;
     text-align: right;
     padding: 10px;
     background-color: #252523;
     font-family: 'Nova Square', cursive;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+#screen::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }
 
 #upperBlock {
     height: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     font-size: 28px;
     color: #a39274;
 }
 
 #lowerBlock {
-    height: 100px;
-    font-size: 56px;
+    height: 60px;
+    font-size: 42px;
     color: #dfd8c8;
 }
 
@@ -67,10 +77,10 @@ h1 {
 
 button {
     font-size: 20px;
-    background-color: #2d2d2b;
+    background-color: #30302e;
     color: #ffffff;
     border: 1px solid #252523;
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: 'Nova Square', cursive;
 }
 
@@ -94,26 +104,19 @@ p {
 }
 
 .numberButton:hover {
-    background-color: #2d2d2b;
+    background-color: #30302e;
 }
 
 #screenAndButtons {
     border: 2px solid #252523;
     background-color: #252523;
+    box-shadow: 5px 5px 5px 5px #252523;
 }
 
 #equalBtn {
-    background-color: #4e3812;
+    background-color: #0f477b;
 }
 
 #equalBtn:hover {
-    background-color: rgba(78, 56, 18, 70%);
-}
-
-#clearAll {
-    background-color: #34312c;
-}
-
-#clearAll:hover {
-    background-color: rgba(52, 49, 44, 70%);
+    background-color: rgba(15, 71, 123, 70%);
 }
