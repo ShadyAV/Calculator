@@ -106,7 +106,7 @@ operatorButtons.forEach(element => {
 });
 
 function display(content) {
-    if (lowerScreen.textContent[lowerScreen.textContent.length - 1] === "." && content === ".") {
+    if (lowerScreen.textContent.search(/[.]/) !== -1 && content === ".") {
         return 0;
     }
     if (lowerScreen.textContent === "0" && content !== "+" && content !== ".") {
