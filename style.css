@@ -110,7 +110,8 @@ p {
 #screenAndButtons {
     border: 2px solid #252523;
     background-color: #252523;
-    box-shadow: 5px 5px 5px 5px #252523;
+    -webkit-box-shadow: 0px 5px 5px 5px #252523;
+    box-shadow: 0px 5px 5px 5px #252523;
 }
 
 #equalBtn {
@@ -119,4 +120,8 @@ p {
 
 #equalBtn:hover {
     background-color: rgba(15, 71, 123, 70%);
+}
+
+#equalBtn:active {
+    background-color: rgba(15, 71, 123, 50%);
 }

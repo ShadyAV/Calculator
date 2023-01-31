@@ -44,7 +44,7 @@ function operate(operator, number_one, number_two) {
     }
 }
 
-equalBtn.addEventListener("click", () => {
+function evaluate() {
     if (operation) {
         second_number = Number(lowerScreen.textContent);
         displayUpper(second_number);
@@ -54,6 +54,10 @@ equalBtn.addEventListener("click", () => {
         display(result);
         operation = "";
     }
+}
+
+equalBtn.addEventListener("click", () => {
+    evaluate();
 });
 
 numberButtons.forEach(element => {
@@ -68,40 +72,36 @@ numberButtons.forEach(element => {
     })
 });
 
+function setOperation(element) {
+    if (lowerScreen.textContent[lowerScreen.textContent.length - 1] === ".") {
+        lowerScreen.textContent = lowerScreen.textContent.slice(0, -1);
+    }
+    if (shouldCalculate === true) {
+        evaluate();
+        shouldCalculate = false;
+    }
+    if (second_number) {
+        upperScreen.textContent = "";
+        second_number = "";
+    }
+    if (!operation) {
+        first_number = Number(lowerScreen.textContent);
+        operation = element;
+        displayUpper(first_number);
+        displayUpper(element);
+    } else {
+        operation = element;
+        upperScreen.textContent = upperScreen.textContent.slice(0, -1);
+        displayUpper(element);
+    }
+    if (first_number != "0") {
+        shouldClearScreen = true;
+    }
+}
+
 operatorButtons.forEach(element => {
     element.addEventListener("click", () => {
-        if (lowerScreen.textContent[lowerScreen.textContent.length - 1] === ".") {
-            lowerScreen.textContent = lowerScreen.textContent.slice(0, -1);
-        }
-        if (shouldCalculate === true) {
-            if (operation) {
-                second_number = Number(lowerScreen.textContent);
-                displayUpper(second_number);
-                let result = operate(operation, first_number, second_number);
-                displayUpper(equalBtn.textContent);
-                shouldClearScreen = true;
-                display(result);
-                operation = "";
-            }
-            shouldCalculate = false;
-        }
-        if (second_number) {
-            upperScreen.textContent = "";
-            second_number = "";
-        }
-        if (!operation) {
-            first_number = Number(lowerScreen.textContent);
-            operation = element.textContent;
-            displayUpper(first_number);
-            displayUpper(element.textContent);
-        } else {
-            operation = element.textContent;
-            upperScreen.textContent = upperScreen.textContent.slice(0, -1);
-            displayUpper(element.textContent);
-        }
-        if (first_number != "0") {
-            shouldClearScreen = true;
-        }
+        setOperation(element.textContent);
     })
 });
 
@@ -142,3 +142,13 @@ function del() {
         lowerScreen.textContent = 0;
     }
 }
+
+document.addEventListener("keydown", (event) => {
+    if (event.key >= 0 && event.key <= 9) display(event.key);
+    if (event.key === "=" || event.key === 'Enter') evaluate();
+    if (event.key === '.') display(".");
+    if (event.key === 'Backspace') del();
+    if (event.key === 'Escape' || event.key === 'Delete') clearAll();
+    if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/')
+        setOperation(event.key);
+});
